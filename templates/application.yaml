@@ -24,7 +24,7 @@ spec:
       helm:
         valueFiles:
           - "$values/config/{{ $name }}-values.yaml"
-    - repoURL: git@github.com:gdncomm-joseph-yusmita/argocd-gtn-app-of-apps-infrak.git
+    - repoURL: git@github.com:gdncomm-joseph-yusmita/argocd-gtn-app-of-apps-infra.git
       targetRevision: main
       ref: values
 ---
