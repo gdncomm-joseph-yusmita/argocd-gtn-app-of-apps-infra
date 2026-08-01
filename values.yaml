@@ -1,0 +1,32 @@
+applications:
+  redis:
+    enabled: true
+    destination:
+      namespace: redis
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: redis
+    targetRevision: 27.0.18
+
+  vault:
+    enabled: true
+    destination:
+      namespace: vault
+    repoURL: https://helm.releases.hashicorp.com
+    chart: vault
+    targetRevision: 0.28.0
+
+  consul:
+    enabled: true
+    destination:
+      namespace: consul
+    repoURL: https://helm.releases.hashicorp.com
+    chart: consul
+    targetRevision: 1.4.1
+
+  mongodb:
+    enabled: true
+    destination:
+      namespace: mongodb
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: mongodb
+    targetRevision: 15.6.1

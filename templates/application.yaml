@@ -1,0 +1,32 @@
+{{- range $name, $config := .Values.applications -}}
+{{ if $config.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $name }}
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ $config.destination.namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: {{ $config.repoURL }}
+      chart: {{ $config.chart }}
+      targetRevision: {{ $config.targetRevision }}
+      helm:
+        valueFiles:
+          - "$values/config/{{ $name }}-values.yaml"
+    - repoURL: git@github.com:gdncomm-joseph-yusmita/argocd-gtn-app-of-apps-infrak.git
+      targetRevision: main
+      ref: values
+---
+{{- end -}}
+{{- end -}}

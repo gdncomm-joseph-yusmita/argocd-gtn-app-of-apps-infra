@@ -1,0 +1,11 @@
+architecture: replicaset
+replicaCount: 1
+replicaSetName: rs0
+auth:
+  enabled: true
+  usernames:
+    - omg_middleware
+  passwords:
+    - omg_middleware
+  databases:
+    - omg_middleware
