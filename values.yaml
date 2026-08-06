@@ -30,11 +30,3 @@ applications:
     repoURL: https://charts.bitnami.com/bitnami
     chart: mongodb
     targetRevision: 19.1.22
-
-  kafka:
-    enabled: true
-    destination:
-      namespace: kafka
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: kafka
-    targetRevision: 32.4.3
