@@ -7,6 +7,10 @@ metadata:
   namespace: argocd
 spec:
   project: default
+  {{- if $config.ignoreDifferences }}
+  ignoreDifferences:
+    {{- toYaml $config.ignoreDifferences | nindent 4 }}
+  {{- end }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ $config.destination.namespace }}

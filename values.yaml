@@ -15,6 +15,15 @@ applications:
     chart: vault
     targetRevision: 0.28.0
 
+    # Prevent ArgoCD from marking the Vault application as
+    # `OutOfSync` due to mutating webhook injecting a TLS certificate
+    ignoreDifferences:
+      - group: admissionregistration.k8s.io
+        kind: MutatingWebhookConfiguration
+        name: vault-agent-injector-cfg
+        jqPathExpressions:
+          - .webhooks[]?.clientConfig.caBundle
+
   consul:
     enabled: true
     destination:
